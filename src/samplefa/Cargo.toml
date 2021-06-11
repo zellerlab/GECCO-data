@@ -1,0 +1,17 @@
+[package]
+name = "samplefa"
+version = "0.1.0"
+authors = ["Martin Larralde <martin.larralde@embl.de>"]
+edition = "2018"
+publish = false
+
+[dependencies]
+bio = "0.34.0"
+flate2 = "1.0.20"
+pico-args = "0.4.2"
+rand = "0.8.3"
+rand_chacha = "0.3.1"
+
+[[bin]]
+name = "samplefa"
+path = "main.rs"
