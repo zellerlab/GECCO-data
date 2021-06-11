@@ -1,0 +1,10 @@
+md5: a964122e58ddce8ddc87a973adb9b5ee
+frozen: true
+deps:
+- etag: '"5da6f2d1-380eefd"'
+  size: 58781437
+  path: https://dl.secondarymetabolites.org/mibig/mibig_gbk_2.0.tar.gz
+outs:
+- md5: 59f21b26a12405a80bc44e9c8459bce0
+  size: 58781437
+  path: mibig-2.0.gbk.tar.gz
