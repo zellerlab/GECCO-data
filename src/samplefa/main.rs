@@ -62,7 +62,7 @@ fn main() {
 
     // randomly select `--total` sequences
     let mut rng = rand_chacha::ChaCha20Rng::seed_from_u64(seed);
-    let mut selected = Vec::with_capacity(total);
+    let mut selected = vec![String::new(); total];
     seq_ids
         .into_iter()
         .choose_multiple_fill(&mut rng, selected.as_mut());
