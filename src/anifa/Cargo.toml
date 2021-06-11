@@ -1,0 +1,16 @@
+[package]
+name = "anifa"
+version = "0.1.0"
+authors = ["Martin Larralde <martin.larralde@embl.de>"]
+edition = "2018"
+publish = false
+
+[dependencies]
+bio = "0.34.0"
+pico-args = "0.4.2"
+indicatif = "0.16.2"
+tempfile = "3.2.0"
+
+[[bin]]
+name = "ani"
+path = "main.rs"
