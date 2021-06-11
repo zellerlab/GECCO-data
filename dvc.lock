@@ -3,7 +3,7 @@ stages:
   sample proGenomes:
     cmd: cargo run --release --manifest-path src/samplefa/Cargo.toml -- --input data/progenomes/freeze12.contigs.representatives.fasta.gz
       --output data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
-      --seed 42 --min-size 100000 --total 5000
+      --seed 42 --min-size 250000 --total 5000
     deps:
     - path: data/progenomes/freeze12.contigs.representatives.fasta.gz
       md5: 358e315953bdf2e35d5b9b4621a4100f
@@ -19,5 +19,5 @@ stages:
       size: 3034
     outs:
     - path: data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
-      md5: 1f0646762ba605cd89b83d32bb4e5202
-      size: 2198258081
+      md5: c03b77c87046303824d7d6e886c0db9c
+      size: 4664432955
