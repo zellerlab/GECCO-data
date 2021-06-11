@@ -8,6 +8,7 @@ publish = false
 [dependencies]
 bio = "0.34.0"
 flate2 = "1.0.20"
+indicatif = "0.16.2"
 pico-args = "0.4.2"
 rand = "0.8.3"
 rand_chacha = "0.3.1"
