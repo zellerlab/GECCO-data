@@ -68,4 +68,6 @@ fn main() {
         .expect("failed to run fastANI");
 
     assert!(proc.status.success());
+    workdir.close().unwrap();
+    list_file.close().unwrap();
 }
