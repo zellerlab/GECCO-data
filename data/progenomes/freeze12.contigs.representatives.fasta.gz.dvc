@@ -1,0 +1,10 @@
+md5: da616d9dd7dcae9a34c02b05902a1404
+frozen: true
+deps:
+- etag: '"24628214-3300dbc16-5b4ec6f65642b"'
+  size: 13691108374
+  path: https://progenomes.embl.de/data/repGenomes/freeze12.contigs.representatives.fasta.gz
+outs:
+- md5: 358e315953bdf2e35d5b9b4621a4100f
+  size: 45496886542
+  path: freeze12.contigs.representatives.fasta.gz
