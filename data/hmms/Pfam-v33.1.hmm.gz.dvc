@@ -1,0 +1,10 @@
+md5: dc1936ad252b5eeb3e51a32acc1d0238
+frozen: true
+deps:
+- etag: '"5eacb992-1056bae8"'
+  size: 274119400
+  path: http://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam33.1/Pfam-A.hmm.gz
+outs:
+- md5: 4779cab2287dc3adbbb9fabd26a04540
+  size: 274119400
+  path: Pfam-v33.1.hmm.gz

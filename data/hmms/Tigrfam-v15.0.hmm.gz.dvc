@@ -1,0 +1,10 @@
+md5: 0305181c5729b2e9d848126636154a16
+frozen: true
+deps:
+- etag: '"69fb444-56f03e43a7761"'
+  size: 111129668
+  path: http://ftp.ncbi.nlm.nih.gov/hmm/TIGRFAMs/release_15.0/TIGRFAMs_15.0_HMM.LIB.gz
+outs:
+- md5: f00f8ca7718a96e609191873f532b57c
+  size: 111129668
+  path: Tigrfam-v15.0.hmm.gz
