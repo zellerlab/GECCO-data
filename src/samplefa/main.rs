@@ -7,7 +7,7 @@ extern crate rand_chacha;
 
 use indicatif::ProgressBar;
 use indicatif::ProgressStyle;
-use rand::seq::IteratorRandom;
+use rand::seq::SliceRandom;
 use rand::SeedableRng;
 
 fn main() {
@@ -33,7 +33,7 @@ fn main() {
         .unwrap_or(5000);
 
     // create a progress bar
-    let mut pb = ProgressBar::new(
+    let pb = ProgressBar::new(
         input_path
             .metadata()
             .expect("could not find input file")
@@ -62,19 +62,14 @@ fn main() {
 
     // randomly select `--total` sequences
     let mut rng = rand_chacha::ChaCha20Rng::seed_from_u64(seed);
-    let mut selected = vec![String::new(); total];
-    seq_ids
-        .into_iter()
-        .choose_multiple_fill(&mut rng, selected.as_mut());
-
-    // hash the selected ids for faster lookup
-    let selected_index = selected
-        .iter()
+    let selected = seq_ids
+        .choose_multiple(&mut rng, total)
         .cloned()
         .collect::<std::collections::HashSet<_>>();
 
     // recover the input sequences
     pb.reset();
+    pb.reset_eta();
     let mut reader: Box<dyn std::io::Read> = std::fs::File::open(&input_path)
         .map(|f| pb.wrap_read(f))
         .map(Box::new)
@@ -88,7 +83,7 @@ fn main() {
         bio::io::fasta::Writer::to_file(output_path).expect("could not create output path");
     for res in bio::io::fasta::Reader::new(reader).records() {
         let record = res.unwrap();
-        if selected_index.contains(record.id()) {
+        if selected.contains(record.id()) {
             writer
                 .write_record(&record)
                 .expect("failed to write record");
