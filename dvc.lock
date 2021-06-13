@@ -21,3 +21,17 @@ stages:
     - path: data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
       md5: c03b77c87046303824d7d6e886c0db9c
       size: 4664432955
+  analyze proGenomes clusters:
+    cmd: antismash -v --skip-zip-file --genefinding-tool prodigal-m --output-dir data/progenomes/antismash/
+      --output-basename freeze12.contigs.representatives.randomly_selected data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
+    deps:
+    - path: data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
+      md5: c03b77c87046303824d7d6e886c0db9c
+      size: 4664432955
+    outs:
+    - path: data/progenomes/antismash/freeze12.contigs.representatives.randomly_selected.gbk
+      md5: 6674ce1a0cca0ef2a68019cfae133edc
+      size: 8603732991
+    - path: data/progenomes/antismash/freeze12.contigs.representatives.randomly_selected.json
+      md5: 57598f95dbb50d38ef33579bdb5ddc92
+      size: 6896225760

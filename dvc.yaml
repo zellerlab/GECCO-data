@@ -10,3 +10,11 @@ stages:
     - src/samplefa/main.rs
     outs:
     - data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
+  analyze proGenomes clusters:
+    cmd: antismash -v --skip-zip-file --genefinding-tool prodigal-m --output-dir data/progenomes/antismash/
+      --output-basename freeze12.contigs.representatives.randomly_selected data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
+    deps:
+    - data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
+    outs:
+    - data/progenomes/antismash/freeze12.contigs.representatives.randomly_selected.gbk
+    - data/progenomes/antismash/freeze12.contigs.representatives.randomly_selected.json
