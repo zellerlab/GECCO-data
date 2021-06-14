@@ -12,10 +12,12 @@ import tqdm
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--input", required=True, help="The input file containing all the contigs to group.")
-parser.add_argument("--output", required=True, help="The file where to write the final list of selected contigs.")
+parser.add_argument("--output", required=True, help="The file where to write the selected contigs.")
+parser.add_argument("--list", required=True, help="The file where to write the final list of selected contigs.")
 parser.add_argument("--6genomes", dest="six", required=True, help="The path to the 6 genomes")
 parser.add_argument("--9genomes", dest="nine", required=True, help="The path to the 9 genomes")
 parser.add_argument("--cutoff", type=float, default=80, help="The ANI cutoff above which to merge sequences")
+parser.add_argument("--total", type=int, default=5000, help="The number of records in the input file")
 args = parser.parse_args()
 
 if len(glob.glob(os.path.join(args.six, "*.gbk"))) != 6:
@@ -29,12 +31,9 @@ sizes = {}
 mapper = pyfastani.Mapper()
 
 print("Sketching references...")
-for record in tqdm.tqdm(Bio.SeqIO.parse(args.input, "fasta"), total=5000):
+for record in tqdm.tqdm(Bio.SeqIO.parse(args.input, "fasta"), total=args.total):
     mapper.add_genome(record.id, record.seq.encode())
     sizes[record.id] = len(record.seq)
-
-    if len(sizes) > 10: break
-
 
 print("Indexing...")
 mapper.index()
@@ -46,13 +45,9 @@ ds = disjoint_set.DisjointSet({i:i for i in range(len(sizes)) })
 print("Mapping...")
 for i, record in enumerate(tqdm.tqdm(Bio.SeqIO.parse(args.input, "fasta"), total=len(sizes))):
     hits = mapper.query_genome(record.seq.encode())
-
     for hit in filter(lambda hit: hit.identity >= args.cutoff, hits):
         j = ids_index[hit.name]
         ds.union(i, j)
-
-    if i == 1: break
-
 
 contig_sets = list(ds.itersets())
 print("Found", len(contig_sets), "independent sets")
@@ -114,5 +109,11 @@ print("Blacklisted", len(blacklist), "contigs")
 
 whitelist = representatives - blacklist
 print("Writing list of", len(whitelist), "remaining contigs")
-with open(args.output, "w") as f:
+with open(args.list, "w") as f:
     f.writelines(f"{r}\n" for r in sorted(whitelist))
+
+print("Writing output")
+with open(args.output, "w") as f:
+    for i, record in enumerate(tqdm.tqdm(Bio.SeqIO.parse(args.input, "fasta"), total=len(sizes))):
+        if record.id in whitelist:
+            Bio.SeqIO.write(record, f, "fasta")
