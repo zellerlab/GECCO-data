@@ -1,0 +1,3 @@
+pyfastani ~=0.1.1
+unionfind
+biopython >=1.79
