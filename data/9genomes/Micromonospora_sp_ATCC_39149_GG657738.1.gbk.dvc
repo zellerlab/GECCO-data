@@ -1,0 +1,8 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=GG657738.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Micromonospora_sp_ATCC_39149_GG657738.1.gbk
+  md5: 0584a1bf8475af7a890c0477f7a4ef3f
+  size: 13375949
+md5: 76c741f4c36e7c14650e86386f069438

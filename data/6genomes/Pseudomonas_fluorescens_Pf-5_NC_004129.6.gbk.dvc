@@ -1,0 +1,9 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=NC_004129.6&rettype=gbwithparts&retmode=text
+outs:
+- path: Pseudomonas_fluorescens_Pf-5_NC_004129.6.gbk
+  md5: 5d8c7be6fcb7cc530f8afc4e6aa0cdf9
+
+  size: 16743028
+md5: c6b4b36be385bf8fc253402f85f44908

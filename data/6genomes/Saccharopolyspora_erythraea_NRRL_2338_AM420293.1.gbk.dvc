@@ -1,0 +1,9 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=AM420293.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Saccharopolyspora_erythraea_NRRL_2338_AM420293.1.gbk
+  md5: 527a13e9b1a04e87ebbaa79b65a2f5a4
+
+  size: 19520870
+md5: 0dcde5f077f0164c1c504faeba2bbacd

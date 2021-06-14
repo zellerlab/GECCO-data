@@ -1,0 +1,9 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=GG657747.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Streptomyces_sp_AA4_GG657747.1.gbk
+  md5: b41f74cbba07fa36dda9c54282317902
+
+  size: 678230
+md5: d34974305e6b5825768cfe617576923a

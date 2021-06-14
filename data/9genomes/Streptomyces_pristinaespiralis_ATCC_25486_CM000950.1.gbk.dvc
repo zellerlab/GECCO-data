@@ -1,0 +1,8 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=CM000950.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Streptomyces_pristinaespiralis_ATCC_25486_CM000950.1.gbk
+  md5: 292bccac3afc2c55419cfc0e4c84989e
+  size: 16007684
+md5: 5779b9f4a71e4f7740635aa5ab371ba2

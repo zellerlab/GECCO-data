@@ -1,0 +1,9 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=AP009493.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Streptomyces_griseus_griseus_NBRC_13350_AP009493.1.gbk
+  md5: 4622e4fb76c0a5ebcd85bc910bafa4e3
+
+  size: 17135358
+md5: 83ed7dca11e92e6ab7b6507bc8c1f313

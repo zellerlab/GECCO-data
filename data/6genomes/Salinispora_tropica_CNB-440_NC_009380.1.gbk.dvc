@@ -1,0 +1,9 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=NC_009380.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Salinispora_tropica_CNB-440_NC_009380.1.gbk
+  md5: cdbfcc39826aa2e8b948298e256e3789
+
+  size: 12671477
+md5: 1c51be11ee97d4abbc6cb0719f1fe76b

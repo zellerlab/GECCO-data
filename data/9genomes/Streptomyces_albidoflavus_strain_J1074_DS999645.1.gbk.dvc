@@ -1,0 +1,9 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=DS999645.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Streptomyces_albidoflavus_strain_J1074_DS999645.1.gbk
+  md5: b12852a96075e5d166639f5112f65f04
+
+  size: 13559612
+md5: 986007483bf08723455e5e2dd7c91733

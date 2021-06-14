@@ -1,0 +1,8 @@
+md5: 46bf9fa2264a8ba43fbab8cca7ea58ec
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=KK037166.1&rettype=gbwithparts&retmode=text
+outs:
+- md5: acb095d3c274c40d83b14c25b6b84aeb
+  size: 23378429
+  path: Kutzneria_sp_744_KK037166.1.gbk

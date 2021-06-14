@@ -1,0 +1,9 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=GG657754.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Streptomyces_hygroscopicus_ATCC_53653_GG657754.1.gbk
+  md5: f6965fc722cfa346d0a54acacdea4e9d
+
+  size: 21666747
+md5: 419a71e6cad2458427131f299b7665df

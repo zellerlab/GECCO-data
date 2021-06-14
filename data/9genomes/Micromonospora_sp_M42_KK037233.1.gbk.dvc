@@ -1,0 +1,8 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=KK037233.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Micromonospora_sp_M42_KK037233.1.gbk
+  md5: da590a952cb8d3b9713b36c2f6ef4caf
+  size: 13518914
+md5: 9d9e68686763b2718c638a61ce4a548a

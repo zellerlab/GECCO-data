@@ -1,0 +1,8 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=NC_007413.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Anabaena_variabilis_ATCC_29413_NC_007413.1.gbk
+  md5: 1217459ff670912d292dbeb3739cfb2c
+  size: 14429007
+md5: 945a2c006b61d2220dccc8559bdc16bb

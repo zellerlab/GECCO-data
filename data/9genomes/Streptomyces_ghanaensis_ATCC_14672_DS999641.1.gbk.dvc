@@ -1,0 +1,8 @@
+frozen: true
+deps:
+- path: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=DS999641.1&rettype=gbwithparts&retmode=text
+outs:
+- path: Streptomyces_ghanaensis_ATCC_14672_DS999641.1.gbk
+  md5: cea09b4472670061a1526f5145eaf5d2
+  size: 16622522
+md5: b83a6add7767fbb09f6f28694988ebe0
