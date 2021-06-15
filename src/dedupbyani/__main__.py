@@ -1,6 +1,8 @@
 import argparse
 import glob
+import multiprocessing.pool
 import os
+from functools import partial
 
 import pyfastani
 import disjoint_set
@@ -42,12 +44,25 @@ ids = sorted(sizes)
 ids_index = { name:i for i,name in enumerate(ids) }
 ds = disjoint_set.DisjointSet({i:i for i in range(len(sizes)) })
 
+
+
+
 print("Mapping...")
-for i, record in enumerate(tqdm.tqdm(Bio.SeqIO.parse(args.input, "fasta"), total=len(sizes))):
+
+def mapping(record, pbar):
     hits = mapper.query_genome(record.seq.encode())
-    for hit in filter(lambda hit: hit.identity >= args.cutoff, hits):
-        j = ids_index[hit.name]
-        ds.union(i, j)
+    pbar.update(1)
+    return record.id, hits
+
+with multiprocessing.pool.ThreadPool() as pool:
+    with tqdm.tqdm(total=len(sizes)) as pbar:
+        records = Bio.SeqIO.parse(args.input, "fasta")
+        all_hits = pool.map(partial(mapping, pbar=pbar), records)
+    for record_id, hits in all_hits:
+        i = ids_index[record_id]
+        for hit in filter(lambda hit: hit.identity >= args.cutoff, hits):
+            j = ids_index[hit.id]
+            ds.union(i, j)
 
 contig_sets = list(ds.itersets())
 print("Found", len(contig_sets), "independent sets")
