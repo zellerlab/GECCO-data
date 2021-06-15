@@ -14,7 +14,7 @@ import tqdm
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--input", required=True, help="The input file containing all the contigs to group.")
-parser.add_argument("--output", required=True, help="The file where to write the selected contigs.")
+parser.add_argument("--output", help="The file where to write the selected contigs.")
 parser.add_argument("--list", required=True, help="The file where to write the final list of selected contigs.")
 parser.add_argument("--6genomes", dest="six", required=True, help="The path to the 6 genomes")
 parser.add_argument("--9genomes", dest="nine", required=True, help="The path to the 9 genomes")
@@ -61,7 +61,7 @@ with multiprocessing.pool.ThreadPool() as pool:
     for record_id, hits in all_hits:
         i = ids_index[record_id]
         for hit in filter(lambda hit: hit.identity >= args.cutoff, hits):
-            j = ids_index[hit.id]
+            j = ids_index[hit.name]
             ds.union(i, j)
 
 contig_sets = list(ds.itersets())
@@ -71,8 +71,9 @@ print("Recovering largest sequence of each set")
 representatives = set()
 for contig_set in contig_sets:
     representative_i = max( contig_set, key=lambda i: sizes[ids[i]] )
-    representatives.add(ids[i])
+    representatives.add(ids[representative_i])
 
+assert len(representatives) == len(contig_sets)
 
 # 6 genomes -> one file per genome
 print("Sketching the 6 genomes")
@@ -106,18 +107,20 @@ print("Indexing")
 mapper.index()
 
 print("Mapping...")
-all_hits = {}
-for i, record in enumerate(tqdm.tqdm(Bio.SeqIO.parse(args.input, "fasta"), total=len(sizes))):
-    if record.id not in representatives:
-        continue
+def mapping(record, pbar):
     hits = mapper.query_genome(record.seq.encode())
-    if hits:
-        all_hits[record.id] = hits
+    pbar.update(1)
+    return record.id, hits
+
+with multiprocessing.pool.ThreadPool() as pool:
+    with tqdm.tqdm(total=len(representatives)) as pbar:
+        records = Bio.SeqIO.parse(args.input, "fasta")
+        all_hits = pool.map(partial(mapping, pbar=pbar), filter(lambda r: r.id in representatives, records))
 
 print("Blacklisting")
 blacklist = {
-    representative
-    for representative, hits in all_hits.items()
+    representative_id
+    for representative_id, hits in all_hits.items()
     if any(hit.identity > args.cutoff for hit in hits)
 }
 print("Blacklisted", len(blacklist), "contigs")
@@ -127,8 +130,9 @@ print("Writing list of", len(whitelist), "remaining contigs")
 with open(args.list, "w") as f:
     f.writelines(f"{r}\n" for r in sorted(whitelist))
 
-print("Writing output")
-with open(args.output, "w") as f:
-    for i, record in enumerate(tqdm.tqdm(Bio.SeqIO.parse(args.input, "fasta"), total=len(sizes))):
-        if record.id in whitelist:
-            Bio.SeqIO.write(record, f, "fasta")
+if args.output is not None:
+    print("Writing output")
+    with open(args.output, "w") as f:
+        for i, record in enumerate(tqdm.tqdm(Bio.SeqIO.parse(args.input, "fasta"), total=len(sizes))):
+            if record.id in whitelist:
+                Bio.SeqIO.write(record, f, "fasta")
