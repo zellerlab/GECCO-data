@@ -21,17 +21,72 @@ stages:
     - path: data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
       md5: c03b77c87046303824d7d6e886c0db9c
       size: 4664432955
-  analyze proGenomes clusters:
-    cmd: antismash -v --skip-zip-file --genefinding-tool prodigal-m --output-dir data/progenomes/antismash/
-      --output-basename freeze12.contigs.representatives.randomly_selected data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
+  deduplicate selected proGenomes contigs:
+    cmd: python -m src.dedupbyani --input data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
+      --list data/progenomes/freeze12.contigs.representatives.deduplicated.txt --6genomes
+      data/6genomes --9genomes data/9genomes --total 5000
     deps:
+    - path: data/6genomes/Anabaena_variabilis_ATCC_29413_NC_007413.1.gbk
+      md5: 1217459ff670912d292dbeb3739cfb2c
+      size: 14429007
+    - path: data/6genomes/Pseudomonas_fluorescens_Pf-5_NC_004129.6.gbk
+      md5: 5d8c7be6fcb7cc530f8afc4e6aa0cdf9
+      size: 16743028
+    - path: data/6genomes/Saccharopolyspora_erythraea_NRRL_2338_AM420293.1.gbk
+      md5: 527a13e9b1a04e87ebbaa79b65a2f5a4
+      size: 19520870
+    - path: data/6genomes/Salinispora_tropica_CNB-440_NC_009380.1.gbk
+      md5: cdbfcc39826aa2e8b948298e256e3789
+      size: 12671477
+    - path: data/6genomes/Sorangium_cellulosum_So_ce_56_AM746676.1.gbk
+      md5: a29feeab2969a4cfabb607f6f848e01e
+      size: 29273578
+    - path: data/6genomes/Streptomyces_griseus_griseus_NBRC_13350_AP009493.1.gbk
+      md5: 4622e4fb76c0a5ebcd85bc910bafa4e3
+      size: 17135358
+    - path: data/9genomes/Kutzneria_sp_744_KK037166.1.gbk
+      md5: acb095d3c274c40d83b14c25b6b84aeb
+      size: 23378429
+    - path: data/9genomes/Micromonospora_sp_ATCC_39149_GG657738.1.gbk
+      md5: 0584a1bf8475af7a890c0477f7a4ef3f
+      size: 13375949
+    - path: data/9genomes/Micromonospora_sp_M42_KK037233.1.gbk
+      md5: da590a952cb8d3b9713b36c2f6ef4caf
+      size: 13518914
+    - path: data/9genomes/Streptomyces_albidoflavus_strain_J1074_DS999645.1.gbk
+      md5: b12852a96075e5d166639f5112f65f04
+      size: 13559612
+    - path: data/9genomes/Streptomyces_ghanaensis_ATCC_14672_DS999641.1.gbk
+      md5: cea09b4472670061a1526f5145eaf5d2
+      size: 16622522
+    - path: data/9genomes/Streptomyces_ghanaensis_ATCC_14672_DS999642.1.gbk
+      md5: d0ecab5c5e6f9b7dd79983358e4ca7fd
+      size: 468023
+    - path: data/9genomes/Streptomyces_hygroscopicus_ATCC_53653_GG657754.1.gbk
+      md5: f6965fc722cfa346d0a54acacdea4e9d
+      size: 21666747
+    - path: data/9genomes/Streptomyces_pristinaespiralis_ATCC_25486_CM000950.1.gbk
+      md5: 292bccac3afc2c55419cfc0e4c84989e
+      size: 16007684
+    - path: data/9genomes/Streptomyces_sp_AA4_GG657746.1.gbk
+      md5: 563f4e2df0ecb787b319b6ab68b41472
+      size: 17219028
+    - path: data/9genomes/Streptomyces_sp_AA4_GG657747.1.gbk
+      md5: b41f74cbba07fa36dda9c54282317902
+      size: 678230
+    - path: data/9genomes/Streptomyces_sp_C_GG657750.1.gbk
+      md5: 67e02c993ed01e3ad1f8e44a89a45484
+      size: 14851803
+    - path: data/9genomes/Streptomyces_sp_C_GG657751.1.gbk
+      md5: 9f17c7d1ca8685f4b732c24662aeb9b8
+      size: 1268276
+    - path: data/9genomes/Streptomyces_sp_C_GG657752.1.gbk
+      md5: 022bdadc3798c4ceb969dbeabfddaf84
+      size: 698374
     - path: data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
       md5: c03b77c87046303824d7d6e886c0db9c
       size: 4664432955
     outs:
-    - path: data/progenomes/antismash/freeze12.contigs.representatives.randomly_selected.gbk
-      md5: 6674ce1a0cca0ef2a68019cfae133edc
-      size: 8603732991
-    - path: data/progenomes/antismash/freeze12.contigs.representatives.randomly_selected.json
-      md5: 57598f95dbb50d38ef33579bdb5ddc92
-      size: 6896225760
+    - path: data/progenomes/freeze12.contigs.representatives.deduplicated.txt
+      md5: a0dddd47b3a8df3b34decdbe83ae086d
+      size: 94266

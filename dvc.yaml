@@ -10,11 +10,31 @@ stages:
     - src/samplefa/main.rs
     outs:
     - data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
-  analyze proGenomes clusters:
-    cmd: antismash -v --skip-zip-file --genefinding-tool prodigal-m --output-dir data/progenomes/antismash/
-      --output-basename freeze12.contigs.representatives.randomly_selected data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
+  deduplicate selected proGenomes contigs:
+    cmd: python -m src.dedupbyani --input data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
+      --list data/progenomes/freeze12.contigs.representatives.deduplicated.txt --6genomes
+      data/6genomes --9genomes data/9genomes --total 5000
     deps:
+    - data/6genomes/Anabaena_variabilis_ATCC_29413_NC_007413.1.gbk
+    - data/6genomes/Pseudomonas_fluorescens_Pf-5_NC_004129.6.gbk
+    - data/6genomes/Saccharopolyspora_erythraea_NRRL_2338_AM420293.1.gbk
+    - data/6genomes/Salinispora_tropica_CNB-440_NC_009380.1.gbk
+    - data/6genomes/Sorangium_cellulosum_So_ce_56_AM746676.1.gbk
+    - data/6genomes/Streptomyces_griseus_griseus_NBRC_13350_AP009493.1.gbk
+    - data/9genomes/Kutzneria_sp_744_KK037166.1.gbk
+    - data/9genomes/Micromonospora_sp_ATCC_39149_GG657738.1.gbk
+    - data/9genomes/Micromonospora_sp_M42_KK037233.1.gbk
+    - data/9genomes/Streptomyces_albidoflavus_strain_J1074_DS999645.1.gbk
+    - data/9genomes/Streptomyces_ghanaensis_ATCC_14672_DS999641.1.gbk
+    - data/9genomes/Streptomyces_ghanaensis_ATCC_14672_DS999642.1.gbk
+    - data/9genomes/Streptomyces_hygroscopicus_ATCC_53653_GG657754.1.gbk
+    - data/9genomes/Streptomyces_pristinaespiralis_ATCC_25486_CM000950.1.gbk
+    - data/9genomes/Streptomyces_sp_AA4_GG657746.1.gbk
+    - data/9genomes/Streptomyces_sp_AA4_GG657747.1.gbk
+    - data/9genomes/Streptomyces_sp_C_GG657750.1.gbk
+    - data/9genomes/Streptomyces_sp_C_GG657751.1.gbk
+    - data/9genomes/Streptomyces_sp_C_GG657752.1.gbk
     - data/progenomes/freeze12.contigs.representatives.randomly_selected.fasta
     outs:
-    - data/progenomes/antismash/freeze12.contigs.representatives.randomly_selected.gbk
-    - data/progenomes/antismash/freeze12.contigs.representatives.randomly_selected.json
+    - data/progenomes/freeze12.contigs.representatives.deduplicated.txt:
+        cache: false

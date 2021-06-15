@@ -120,7 +120,7 @@ with multiprocessing.pool.ThreadPool() as pool:
 print("Blacklisting")
 blacklist = {
     representative_id
-    for representative_id, hits in all_hits.items()
+    for representative_id, hits in all_hits
     if any(hit.identity > args.cutoff for hit in hits)
 }
 print("Blacklisted", len(blacklist), "contigs")
