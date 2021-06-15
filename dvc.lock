@@ -90,3 +90,18 @@ stages:
     - path: data/progenomes/freeze12.contigs.representatives.deduplicated.txt
       md5: a0dddd47b3a8df3b34decdbe83ae086d
       size: 94266
+  extract deduplicated proGenomes contigs:
+    cmd: cargo run --release --manifest-path src/extractfa/Cargo.toml -- --input data/progenomes/freeze12.contigs.representatives.fasta.gz
+      --list data/progenomes/freeze12.contigs.representatives.deduplicated.txt --output
+      data/progenomes/freeze12.contigs.representatives.deduplicated.fasta
+    deps:
+    - path: data/progenomes/freeze12.contigs.representatives.deduplicated.txt
+      md5: a0dddd47b3a8df3b34decdbe83ae086d
+      size: 94266
+    - path: data/progenomes/freeze12.contigs.representatives.fasta.gz
+      md5: 358e315953bdf2e35d5b9b4621a4100f
+      size: 45496886542
+    outs:
+    - path: data/progenomes/freeze12.contigs.representatives.deduplicated.fasta
+      md5: 1a1365860ca0568eada8857fdb2d9d87
+      size: 2848515075

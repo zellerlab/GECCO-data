@@ -38,3 +38,12 @@ stages:
     outs:
     - data/progenomes/freeze12.contigs.representatives.deduplicated.txt:
         cache: false
+  extract deduplicated proGenomes contigs:
+    cmd: cargo run --release --manifest-path src/extractfa/Cargo.toml -- --input data/progenomes/freeze12.contigs.representatives.fasta.gz
+      --list data/progenomes/freeze12.contigs.representatives.deduplicated.txt --output
+      data/progenomes/freeze12.contigs.representatives.deduplicated.fasta
+    deps:
+    - data/progenomes/freeze12.contigs.representatives.deduplicated.txt
+    - data/progenomes/freeze12.contigs.representatives.fasta.gz
+    outs:
+    - data/progenomes/freeze12.contigs.representatives.deduplicated.fasta
