@@ -105,3 +105,17 @@ stages:
     - path: data/progenomes/freeze12.contigs.representatives.deduplicated.fasta
       md5: 1a1365860ca0568eada8857fdb2d9d87
       size: 2848515075
+  analyze deduplicated proGenomes contigs:
+    cmd: antismash -v --skip-zip-file --genefinding-tool prodigal-m --output-dir data/antismash/freeze12.contigs.representatives.deduplicated
+      --output-basename deduplicated data/progenomes/freeze12.contigs.representatives.deduplicated.fasta
+    deps:
+    - path: data/progenomes/freeze12.contigs.representatives.deduplicated.fasta
+      md5: 1a1365860ca0568eada8857fdb2d9d87
+      size: 2848515075
+    outs:
+    - path: data/antismash/freeze12.contigs.representatives.deduplicated/deduplicated.gbk
+      md5: d81487d5242d0926b756ba5476d79c58
+      size: 5229719053
+    - path: data/antismash/freeze12.contigs.representatives.deduplicated/deduplicated.json
+      md5: 50ee031d75e492593b7c498d68db9cca
+      size: 4184127168
