@@ -55,3 +55,12 @@ stages:
     outs:
     - data/antismash/freeze12.contigs.representatives.deduplicated/deduplicated.gbk
     - data/antismash/freeze12.contigs.representatives.deduplicated/deduplicated.json
+  remove biosynthetic regions from proGenomes contigs:
+    cmd: python -m src.delregions --input data/antismash/freeze12.contigs.representatives.deduplicated/deduplicated.gbk
+      --list data/progenomes/freeze12.contigs.representatives.deduplicated.txt --output
+      data/progenomes/freeze12.contigs.representatives.cleaned.fasta
+    deps:
+    - data/antismash/freeze12.contigs.representatives.deduplicated/deduplicated.gbk
+    - data/progenomes/freeze12.contigs.representatives.deduplicated.txt
+    outs:
+    - data/progenomes/freeze12.contigs.representatives.cleaned.fasta

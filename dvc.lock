@@ -119,3 +119,18 @@ stages:
     - path: data/antismash/freeze12.contigs.representatives.deduplicated/deduplicated.json
       md5: 50ee031d75e492593b7c498d68db9cca
       size: 4184127168
+  remove biosynthetic regions from proGenomes contigs:
+    cmd: python -m src.delregions --input data/antismash/freeze12.contigs.representatives.deduplicated/deduplicated.gbk
+      --list data/progenomes/freeze12.contigs.representatives.deduplicated.txt --output
+      data/progenomes/freeze12.contigs.representatives.cleaned.fasta
+    deps:
+    - path: data/antismash/freeze12.contigs.representatives.deduplicated/deduplicated.gbk
+      md5: d81487d5242d0926b756ba5476d79c58
+      size: 5229719053
+    - path: data/progenomes/freeze12.contigs.representatives.deduplicated.txt
+      md5: a0dddd47b3a8df3b34decdbe83ae086d
+      size: 94266
+    outs:
+    - path: data/progenomes/freeze12.contigs.representatives.cleaned.fasta
+      md5: b0d19234821b7ac5f3157b95572e11bc
+      size: 2780715671
