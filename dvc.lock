@@ -134,3 +134,17 @@ stages:
     - path: data/progenomes/freeze12.contigs.representatives.cleaned.fasta
       md5: b0d19234821b7ac5f3157b95572e11bc
       size: 2780715671
+  analyze cleaned proGenomes contigs:
+    cmd: antismash -v --skip-zip-file --genefinding-tool prodigal-m --output-dir data/antismash/freeze12.contigs.representatives.cleaned
+      --output-basename cleaned data/progenomes/freeze12.contigs.representatives.cleaned.fasta
+    deps:
+    - path: data/progenomes/freeze12.contigs.representatives.cleaned.fasta
+      md5: b0d19234821b7ac5f3157b95572e11bc
+      size: 2780715671
+    outs:
+    - path: data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
+      md5: bad8a4b0e50c3d25f3ab0f98e47b668a
+      size: 4957775836
+    - path: data/antismash/freeze12.contigs.representatives.cleaned/cleaned.json
+      md5: 40a2810eee016ca89f6e8294cb415b2a
+      size: 3949516359

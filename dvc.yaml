@@ -64,3 +64,11 @@ stages:
     - data/progenomes/freeze12.contigs.representatives.deduplicated.txt
     outs:
     - data/progenomes/freeze12.contigs.representatives.cleaned.fasta
+  analyze cleaned proGenomes contigs:
+    cmd: antismash -v --skip-zip-file --genefinding-tool prodigal-m --output-dir data/antismash/freeze12.contigs.representatives.cleaned
+      --output-basename cleaned data/progenomes/freeze12.contigs.representatives.cleaned.fasta
+    deps:
+    - data/progenomes/freeze12.contigs.representatives.cleaned.fasta
+    outs:
+    - data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
+    - data/antismash/freeze12.contigs.representatives.cleaned/cleaned.json
