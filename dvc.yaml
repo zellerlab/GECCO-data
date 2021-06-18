@@ -72,3 +72,33 @@ stages:
     outs:
     - data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
     - data/antismash/freeze12.contigs.representatives.cleaned/cleaned.json
+  make MIBiG_1_3 embeddings:
+    cmd: python -m src.embed --input data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
+      --list data/progenomes/freeze12.contigs.representatives.deduplicated.txt --mibig
+      data/mibig/ --version 1.3 --output-prefix data/embeddings/mibig-1.3.proG2
+    deps:
+    - data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
+    - data/mibig/mibig-1.3.gbk.tar.gz
+    - data/mibig/mibig-1.3.json.tar.gz
+    - data/mibig/mibig-1.4.json.tar.gz
+    - data/mibig/mibig-2.0.json.tar.gz
+    - data/progenomes/freeze12.contigs.representatives.deduplicated.txt
+    outs:
+    - data/embeddings/mibig-1.3.proG2.clusters.tsv
+    - data/embeddings/mibig-1.3.proG2.fna
+    - data/embeddings/mibig-1.3.proG2.gbk
+  make MIBiG_2_0 embeddings:
+    cmd: python -m src.embed --input data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
+      --list data/progenomes/freeze12.contigs.representatives.deduplicated.txt --mibig
+      data/mibig/ --version 2.0 --output-prefix data/embeddings/mibig-2.0.proG2
+    deps:
+    - data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
+    - data/mibig/mibig-1.3.json.tar.gz
+    - data/mibig/mibig-1.4.json.tar.gz
+    - data/mibig/mibig-2.0.gbk.tar.gz
+    - data/mibig/mibig-2.0.json.tar.gz
+    - data/progenomes/freeze12.contigs.representatives.deduplicated.txt
+    outs:
+    - data/embeddings/mibig-2.0.proG2.clusters.tsv
+    - data/embeddings/mibig-2.0.proG2.fna
+    - data/embeddings/mibig-2.0.proG2.gbk
