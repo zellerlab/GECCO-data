@@ -1,0 +1,10 @@
+md5: 6472f8ec445659c8f6e639ce95cc85dc
+frozen: true
+deps:
+- etag: '"5d169d88-842c1"'
+  size: 541377
+  path: https://dl.secondarymetabolites.org/mibig/mibig_json_1.4.tar.gz
+outs:
+- md5: a85530571d9dd7978b1bb0f2580cd30e
+  size: 541377
+  path: mibig-1.4.json.tar.gz
