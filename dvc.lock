@@ -151,7 +151,8 @@ stages:
   make MIBiG_1_3 embeddings:
     cmd: python -m src.embed --input data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
       --list data/progenomes/freeze12.contigs.representatives.deduplicated.txt --mibig
-      data/mibig/ --version 1.3 --output-prefix data/embeddings/mibig-1.3.proG2
+      data/mibig/ --version 1.3 --output-prefix data/embeddings/mibig-1.3.proG2 --retire
+      data/mibig/retire.txt
     deps:
     - path: data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
       md5: bad8a4b0e50c3d25f3ab0f98e47b668a
@@ -168,23 +169,27 @@ stages:
     - path: data/mibig/mibig-2.0.json.tar.gz
       md5: 843ce4677db6d11422f0e6d94dd03e81
       size: 581956
+    - path: data/mibig/retire.txt
+      md5: aa678a56409585e376485639dd67d705
+      size: 2920
     - path: data/progenomes/freeze12.contigs.representatives.deduplicated.txt
       md5: a0dddd47b3a8df3b34decdbe83ae086d
       size: 94266
     outs:
     - path: data/embeddings/mibig-1.3.proG2.clusters.tsv
-      md5: 6459447e4d8bbd475e4073d1cb9b9f09
-      size: 93368
+      md5: 123c708268c484f149d115990568ada1
+      size: 92658
     - path: data/embeddings/mibig-1.3.proG2.fna
-      md5: a511a9c49817a5eba150701684f167fe
-      size: 1233250229
+      md5: 83cfc9bcc2839824cd97c97a10dcb4c8
+      size: 1225172555
     - path: data/embeddings/mibig-1.3.proG2.gbk
-      md5: 19b5160199ed5946f031ba6f7f026a8f
-      size: 2199580679
+      md5: f7177a6d06449991924546257d1a358d
+      size: 2185040474
   make MIBiG_2_0 embeddings:
     cmd: python -m src.embed --input data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
       --list data/progenomes/freeze12.contigs.representatives.deduplicated.txt --mibig
-      data/mibig/ --version 2.0 --output-prefix data/embeddings/mibig-2.0.proG2
+      data/mibig/ --version 2.0 --output-prefix data/embeddings/mibig-2.0.proG2 --retire
+      data/mibig/retire.txt
     deps:
     - path: data/antismash/freeze12.contigs.representatives.cleaned/cleaned.gbk
       md5: bad8a4b0e50c3d25f3ab0f98e47b668a
@@ -201,16 +206,19 @@ stages:
     - path: data/mibig/mibig-2.0.json.tar.gz
       md5: 843ce4677db6d11422f0e6d94dd03e81
       size: 581956
+    - path: data/mibig/retire.txt
+      md5: aa678a56409585e376485639dd67d705
+      size: 2920
     - path: data/progenomes/freeze12.contigs.representatives.deduplicated.txt
       md5: a0dddd47b3a8df3b34decdbe83ae086d
       size: 94266
     outs:
     - path: data/embeddings/mibig-2.0.proG2.clusters.tsv
-      md5: 466ada4b33ffdc9afd7c0c5308e8bec3
-      size: 127954
+      md5: 8c8d2cce25e2d85f689cabdd9ae3c3a0
+      size: 125996
     - path: data/embeddings/mibig-2.0.proG2.fna
-      md5: edd2b709e6db5e6524df162f9e0f8937
-      size: 1719992741
+      md5: 01ef24c576b948a3da9667516f17a5f2
+      size: 1689042989
     - path: data/embeddings/mibig-2.0.proG2.gbk
-      md5: 6578d71688ba93bd1c5390f688e23ea8
-      size: 3164155571
+      md5: 72c42ecaf3f4a78ad5728d876157a241
+      size: 3107716320
