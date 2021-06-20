@@ -108,3 +108,15 @@ stages:
         cache: false
     - data/embeddings/mibig-2.0.proG2.fna
     - data/embeddings/mibig-2.0.proG2.gbk
+  index MIBiG_1_3 FASTA embedding:
+    cmd: samtools faidx data/embeddings/mibig-1.3.proG2.fna
+    deps:
+    - data/embeddings/mibig-1.3.proG2.fna
+    outs:
+    - data/embeddings/mibig-1.3.proG2.fna.fai
+  index MIBiG_2_0 FASTA embedding:
+    cmd: samtools faidx data/embeddings/mibig-2.0.proG2.fna
+    deps:
+    - data/embeddings/mibig-2.0.proG2.fna
+    outs:
+    - data/embeddings/mibig-2.0.proG2.fna.fai
