@@ -51,11 +51,17 @@ parser.add_argument("--list", required=True, help="The list of contigs selected 
 parser.add_argument("--mibig", required=True, help="The path to MIBiG data archives.")
 parser.add_argument("--version", required=True, choices={"1.3", "2.0"}, help="MIBiG version for which to generate embeddings")
 parser.add_argument("--output-prefix", required=True, help="The prefix for the output files.")
+parser.add_argument("--retire", help="The list of BGCs to retire")
 args = parser.parse_args()
 
 with open(args.list) as f:
     selected = {line.strip() for line in f}
 
+if args.retire is not None:
+    with open(args.retire) as f:
+        retired = { line.strip().split("\t")[0] for line in f if line.strip() }
+else:
+    retired = {}
 
 mibig_all_meta_set = set()
 for tar in glob.glob(os.path.join(args.mibig, "*.json.tar.gz")):
@@ -95,11 +101,16 @@ with contextlib.ExitStack() as ctx:
 
     print("sequence_id", "bgc_id", "start", "end", "type", file=tsv, sep="\t")
     n_skipped = 0
+    n_retired = 0
 
     for bgc_id, bgc_gbk in tqdm.tqdm(mibig_gbk.items(), total=len(mibig_gbk), desc="Embedding"):
 
         if bgc_id not in mibig_meta:
             n_skipped += 1
+            continue
+
+        if bgc_id in retired:
+            n_retired += 1
             continue
 
         contig = pairing[bgc_id]
@@ -128,3 +139,4 @@ with contextlib.ExitStack() as ctx:
         print(record.id, bgc_id, insert_loc, insert_loc + len(bgc_gbk), types, file=tsv, sep="\t")
 
     print("Skipped", n_skipped, "GenBank records that were not in metadata")
+    print("Forcefully retired", n_retired, "BGCs")

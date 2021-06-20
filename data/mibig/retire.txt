@@ -1,0 +1,31 @@
+bgc_id	reason	reference
+BGC0001916	exact duplicate of BGC0001649	https://github.com/mibig-secmet/mibig-json/issues/2
+BGC0001662	duplicate of BGC0001932 with extra genes	https://github.com/mibig-secmet/mibig-json/issues/33
+BGC0000386	invalid compound location	https://github.com/mibig-secmet/mibig-json/issues/30
+BGC0001804	exact duplicate of BGC0001378	https://github.com/mibig-secmet/mibig-json/issues/9
+BGC0001784	duplicate of BGC0001939 with extra flanking regions	https://github.com/mibig-secmet/mibig-json/issues/62
+BGC0000696	duplicate of BGC0001603 with extra flanking regions	https://github.com/mibig-secmet/mibig-json/issues/60
+BGC0001803	exact duplicate of BGC0000625	https://github.com/mibig-secmet/mibig-json/issues/58
+BGC0001555	locus contains several unrelated clusters	https://github.com/mibig-secmet/mibig-json/issues/56
+BGC0001982	exact duplicate of BGC0001881	https://github.com/mibig-secmet/mibig-json/issues/53
+BGC0001362	exact duplicate of BGC0000932	https://github.com/mibig-secmet/mibig-json/issues/39
+BGC0001891	wrong locus coordinates	https://github.com/mibig-secmet/mibig-json/issues/37
+BGC0001805	exact duplicate of BGC0000446	https://github.com/mibig-secmet/mibig-json/issues/89
+BGC0001241	wrong locus coordinates	https://github.com/mibig-secmet/mibig-json/issues/88
+BGC0001557	exact duplicate of BGC0001436	https://github.com/mibig-secmet/mibig-json/issues/87
+BGC0001815	exact duplicate of BGC0001377	https://github.com/mibig-secmet/mibig-json/issues/86
+BGC0001908	exact duplicate of BGC0001770	https://github.com/mibig-secmet/mibig-json/issues/85
+BGC0002003	exact duplicate of BGC0001608	https://github.com/mibig-secmet/mibig-json/issues/84
+BGC0001444	exact duplicate of BGC0001538	https://github.com/mibig-secmet/mibig-json/issues/81
+BGC0000655	exact duplicate of BGC0000611	https://github.com/mibig-secmet/mibig-json/issues/78
+BGC0001920	duplicate of BGC0001921	https://github.com/mibig-secmet/mibig-json/issues/77
+BGC0001958	exact duplicate of BGC0001957	https://github.com/mibig-secmet/mibig-json/issues/75
+BGC0001442	exact duplicate of BGC0001497 with wrong type	https://github.com/mibig-secmet/mibig-json/issues/73
+BGC0000928	exact duplicate of BGC0000188 with missing annotations	https://github.com/mibig-secmet/mibig-json/issues/71
+BGC0001992	wrong locus coordinates	https://github.com/mibig-secmet/mibig-json/issues/65
+BGC0001124	wrong locus coordinates	https://mibig.secondarymetabolites.org/repository/BGC0001124/#r1c1
+BGC0000025	wrong locus coordinates	https://mibig.secondarymetabolites.org/repository/BGC0000025/#r1c1
+BGC0000467	wrong locus coordinates	https://github.com/mibig-secmet/mibig-json/issues/94
+BGC0001228	wrong locus coordinates	https://github.com/mibig-secmet/mibig-json/issues/93
+BGC0000805	wrong locus coordinates	https://github.com/mibig-secmet/mibig-json/issues/92
+BGC0001915	exact duplicate of BGC0001528	https://github.com/mibig-secmet/mibig-json/issues/91
