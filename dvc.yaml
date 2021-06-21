@@ -152,3 +152,35 @@ stages:
     - data/hmms/Pfam-v31.0.hmm.gz
     outs:
     - data/embeddings/mibig-1.3.proG2.Pfam-v31.0.features.tsv
+  annotate MIBiG_2_0 embeddings with Tigrfam_15_0:
+    cmd: src/annotate/gecco-annotate-slurm.sh data/embeddings/mibig-2.0.proG2.fna.fai
+      data/hmms/Tigrfam-v15.0.hmm.gz
+    deps:
+    - data/embeddings/mibig-2.0.proG2.fna.fai
+    - data/hmms/Tigrfam-v15.0.hmm.gz
+    outs:
+    - data/embeddings/mibig-2.0.proG2.Tigrfam-v15.0.features.tsv
+  annotate MIBiG_2_0 embeddings with Pfam_31_0:
+    cmd: src/annotate/gecco-annotate-slurm.sh data/embeddings/mibig-2.0.proG2.fna.fai
+      data/hmms/Pfam-v31.0.hmm.gz
+    deps:
+    - data/embeddings/mibig-2.0.proG2.fna.fai
+    - data/hmms/Pfam-v31.0.hmm.gz
+    outs:
+    - data/embeddings/mibig-2.0.proG2.Pfam-v31.0.features.tsv
+  annotate MIBiG_2_0 embeddings with Pfam_33_1:
+    cmd: src/annotate/gecco-annotate-slurm.sh data/embeddings/mibig-2.0.proG2.fna.fai
+      data/hmms/Pfam-v33.1.hmm.gz
+    deps:
+    - data/embeddings/mibig-2.0.proG2.fna.fai
+    - data/hmms/Pfam-v33.1.hmm.gz
+    outs:
+    - data/embeddings/mibig-2.0.proG2.Pfam-v33.1.features.tsv
+  annotate MIBiG_2_0 embeddings with Pfam_34_0:
+    cmd: src/annotate/gecco-annotate-slurm.sh data/embeddings/mibig-2.0.proG2.fna.fai
+      data/hmms/Pfam-v34.0.hmm.gz
+    deps:
+    - data/embeddings/mibig-2.0.proG2.fna.fai
+    - data/hmms/Pfam-v34.0.hmm.gz
+    outs:
+    - data/embeddings/mibig-2.0.proG2.Pfam-v34.0.features.tsv

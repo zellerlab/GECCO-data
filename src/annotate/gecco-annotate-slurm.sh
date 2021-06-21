@@ -77,7 +77,7 @@ JOB_SCRIPT="$LOCALDIR/tmp/${JOB_ID}.job.sh"
 log Writig job script to \`$JOB_SCRIPT\`
 echo '#!/bin/sh'                                                              >  "$JOB_SCRIPT"
 echo '#SBATCH -A zeller'                                                      >> "$JOB_SCRIPT"
-echo '#SBATCH -t 02:00:00'                                                    >> "$JOB_SCRIPT"
+echo '#SBATCH -t 06:00:00'                                                    >> "$JOB_SCRIPT"
 echo '#SBATCH -n 1'                                                           >> "$JOB_SCRIPT"
 echo '#SBATCH --mail-type ALL'                                                >> "$JOB_SCRIPT"
 echo '#SBATCH --mem 2G'                                                       >> "$JOB_SCRIPT"
