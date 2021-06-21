@@ -47,7 +47,7 @@ mkdir -p $LOCALDIR/tmp/wheels
 
 # Load modules
 log Loading required modules
-# module load Python/3.8.6-GCCcore-10.2.0
+module load Python/3.8.6-GCCcore-10.2.0
 
 # Find every FASTA file in the data directory, and cache that for analysis
 log Collecting all sequences in input directory
@@ -56,13 +56,15 @@ FA_COUNT=$( cat $LOCALDIR/tmp/${JOB_ID}.files.txt | wc -l )
 log Found $FA_COUNT contigs to process
 
 # Deduce the job count and bin size
-JOB_COUNT=$( python -c "print(min(2000, $FA_COUNT))" )
-BIN_SIZE=$( python -c "import math; print(math.ceil(max($FA_COUNT/$JOB_COUNT, 1)))" )
-JOB_COUNT=$( python -c "import math; print(math.ceil($FA_COUNT / $BIN_SIZE))" )
-log Using bin size of $BIN_SIZE with $JOB_COUNT jobs
+#JOB_COUNT=$( python -c "print(min(2000, $FA_COUNT))" )
+#BIN_SIZE=$( python -c "import math; print(math.ceil(max($FA_COUNT/$JOB_COUNT, 1)))" )
+#JOB_COUNT=$( python -c "import math; print(math.ceil($FA_COUNT / $BIN_SIZE))" )
+BIN_SIZE=1
+JOB_COUNT=$FA_COUNT
+log Using $JOB_COUNT jobs
 
 # Download wheels
-#pip wheel https://github.com/zellerlab/GECCO/archive/dev.zip -w $LOCALDIR/tmp/wheels
+pip wheel https://github.com/zellerlab/GECCO/archive/dev.zip -w $LOCALDIR/tmp/wheels
 
 # ---
 
@@ -78,7 +80,8 @@ echo '#SBATCH -A zeller'                                                      >>
 echo '#SBATCH -t 02:00:00'                                                    >> "$JOB_SCRIPT"
 echo '#SBATCH -n 1'                                                           >> "$JOB_SCRIPT"
 echo '#SBATCH --mail-type ALL'                                                >> "$JOB_SCRIPT"
-echo '#SBATCH --mem 512M'                                                     >> "$JOB_SCRIPT"
+echo '#SBATCH --mem 2G'                                                       >> "$JOB_SCRIPT"
+echo '#SBATCH --oversubscribe'                                                >> "$JOB_SCRIPT"
 echo "#SBATCH -o $LOCALDIR/logs/out/$JOB_ID/%a.out"                           >> "$JOB_SCRIPT"
 echo "#SBATCH -e $LOCALDIR/logs/err/$JOB_ID/%a.err"                           >> "$JOB_SCRIPT"
 echo "#SBATCH --gres=tmp:512M"                                                >> "$JOB_SCRIPT"
@@ -112,7 +115,7 @@ echo '	samtools faidx $FA $seq -o $TMPDIR/$base'                             >> 
 echo ''                                                                       >> "$JOB_SCRIPT"
 echo '  echo Running GECCO on $base'                                          >> "$JOB_SCRIPT"
 echo '  mkdir -p "$TMPDIR/out/"'                                              >> "$JOB_SCRIPT"
-echo '  gecco -vv annotate -j1 --genome $TMPDIR/$base --hmm $TMPDIR/${HMM_NAME}.hmm.gz -o $TMPDIR/out/$base.$HMM_NAME.features.tsv' >> "$JOB_SCRIPT"
+echo '  gecco -vv annotate -j1 --e-filter 1000 --genome $TMPDIR/$base --hmm $TMPDIR/${HMM_NAME}.hmm.gz -o $TMPDIR/out/$base.$HMM_NAME.features.tsv' >> "$JOB_SCRIPT"
 echo ''                                                                       >> "$JOB_SCRIPT"
 echo '	echo Copying $base results to $OUTDIR'                                >> "$JOB_SCRIPT"
 echo '  mkdir -p "$OUTDIR/$SLURM_ARRAY_TASK_ID"'                              >> "$JOB_SCRIPT"
@@ -126,14 +129,11 @@ echo ''                                                                       >>
 
 log Submitting jobs to the cluster
 sbatch -W --array=1-$JOB_COUNT $JOB_SCRIPT
-#sbatch -W --qos=high --array=1-2 $JOB_SCRIPT
-#sbatch --array=410,440,724 $JOB_SCRIPT
+#sbatch -W --qos=high --array=1 $JOB_SCRIPT
 
-
-files=$(ls -1 $LOCALDIR/out/$JOB_ID/*/*.$HMM_NAME.features.tsv | sort -h)
-
-head -n1 $(echo $files | head -n1) > $OUT_FILE
-for file in $files; do
+head -n1 $(ls -1 $LOCALDIR/out/$JOB_ID/*/*.$HMM_NAME.features.tsv | head -n1) > $OUT_FILE
+for i in $(seq 1 $JOB_COUNT); do
+  file=$(ls $LOCALDIR/out/$JOB_ID/$i/*.$HMM_NAME.features.tsv)
   log Collecting results from $(realpath $file --relative-to $LOCALDIR/out/$JOB_ID)
   tail -n+2 $file >> $OUT_FILE
 done
