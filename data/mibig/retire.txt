@@ -32,3 +32,4 @@ BGC0001915	exact duplicate of BGC0001528	https://github.com/mibig-secmet/mibig-j
 BGC0000979	duplicate of a subsequence of BGC0000981	https://github.com/mibig-secmet/mibig-json/issues/118
 BGC0000980	duplicate of a subsequence of BGC0000981	https://github.com/mibig-secmet/mibig-json/issues/118
 BGC0000228	duplicate of a subsequence of BGC0000227	https://github.com/mibig-secmet/mibig-json/issues/119
+BGC0000835	duplicate of a subsequence of BGC0000270	https://github.com/mibig-secmet/mibig-json/issues/120
