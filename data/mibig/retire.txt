@@ -33,3 +33,5 @@ BGC0000979	duplicate of a subsequence of BGC0000981	https://github.com/mibig-sec
 BGC0000980	duplicate of a subsequence of BGC0000981	https://github.com/mibig-secmet/mibig-json/issues/118
 BGC0000228	duplicate of a subsequence of BGC0000227	https://github.com/mibig-secmet/mibig-json/issues/119
 BGC0000835	duplicate of a subsequence of BGC0000270	https://github.com/mibig-secmet/mibig-json/issues/120
+BGC0000246	duplicate of a subsequence of BGC0000247	https://github.com/mibig-secmet/mibig-json/issues/121
+BGC0000214	duplicate of a subsequence of BGC0001074	https://github.com/mibig-secmet/mibig-json/issues/122
