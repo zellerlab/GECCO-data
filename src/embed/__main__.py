@@ -136,6 +136,8 @@ with contextlib.ExitStack() as ctx:
         Bio.SeqIO.write(record, fna, "fasta")
 
         types = ";".join(sorted(mibig_meta[bgc_id]["biosyn_class"]))
+        if types == "Nucleoside": # fix bad annotation of BGC0000880 in MIBiG 1.3 JSON
+            types = "Other" 
         print(record.id, bgc_id, insert_loc, insert_loc + len(bgc_gbk), types, file=tsv, sep="\t")
 
     print("Skipped", n_skipped, "GenBank records that were not in metadata")
