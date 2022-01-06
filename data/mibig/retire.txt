@@ -53,4 +53,5 @@ BGC0001854	duplicate of a subsequence of BGC0001901	https://github.com/mibig-sec
 BGC0002030	duplicate of BGC0001866 with extra flanking regions	https://github.com/mibig-secmet/mibig-json/issues/164
 BGC0001096	duplicate of BGC0000995 with extra flanking regions	https://github.com/mibig-secmet/mibig-json/issues/165
 BGC0000965	duplicate of BGC0001397 with extra flanking regions	https://github.com/mibig-secmet/mibig-json/issues/166
+BGC0001559	duplicate of BGC0000974 with wrong type	https://github.com/mibig-secmet/mibig-json/issues/170
 
