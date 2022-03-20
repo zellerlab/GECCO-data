@@ -64,7 +64,7 @@ JOB_COUNT=$FA_COUNT
 log Using $JOB_COUNT jobs
 
 # Download wheels
-pip wheel https://github.com/zellerlab/GECCO/archive/dev.zip -w $LOCALDIR/tmp/wheels
+pip wheel https://github.com/zellerlab/GECCO/archive/master.zip -w $LOCALDIR/tmp/wheels
 
 # ---
 
@@ -115,7 +115,7 @@ echo '	samtools faidx $FA $seq -o $TMPDIR/$base'                             >> 
 echo ''                                                                       >> "$JOB_SCRIPT"
 echo '  echo Running GECCO on $base'                                          >> "$JOB_SCRIPT"
 echo '  mkdir -p "$TMPDIR/out/"'                                              >> "$JOB_SCRIPT"
-echo '  gecco -vv annotate -j1 --e-filter 1000 --genome $TMPDIR/$base --hmm $TMPDIR/${HMM_NAME}.hmm.gz -o $TMPDIR/out/$base.$HMM_NAME.features.tsv' >> "$JOB_SCRIPT"
+echo '  gecco -vv annotate -j1 --p-filter 0.05 --genome $TMPDIR/$base --hmm $TMPDIR/${HMM_NAME}.hmm.gz -o $TMPDIR/out/$base.$HMM_NAME.features.tsv' >> "$JOB_SCRIPT"
 echo ''                                                                       >> "$JOB_SCRIPT"
 echo '	echo Copying $base results to $OUTDIR'                                >> "$JOB_SCRIPT"
 echo '  mkdir -p "$OUTDIR/$SLURM_ARRAY_TASK_ID"'                              >> "$JOB_SCRIPT"
