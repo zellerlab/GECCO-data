@@ -354,3 +354,31 @@ stages:
     - path: data/embeddings/mibig-2.0.proG2.Pfam-v34.0.features.tsv
       md5: 1cf574cdd7edac64be3585631949b8f1
       size: 1394084376
+  annotate MIBiG_1_3 embeddings with Pfam_35_0:
+    cmd: src/annotate/gecco-annotate-slurm.sh data/embeddings/mibig-1.3.proG2.fna.fai
+      data/hmms/Pfam-v35.0.hmm.gz
+    deps:
+    - path: data/embeddings/mibig-1.3.proG2.fna.fai
+      md5: 09380d57c4651a389839cb009ee11845
+      size: 77224
+    - path: data/hmms/Pfam-v35.0.hmm.gz
+      md5: 2cdbfbec0e3c6f0b1ecb6db1b8fc337f
+      size: 293000230
+    outs:
+    - path: data/embeddings/mibig-1.3.proG2.Pfam-v35.0.features.tsv
+      md5: dbeb21021e02d3565504f64ac8e11a05
+      size: 1219655461
+  annotate MIBiG_2_0 embeddings with Pfam_35_0:
+    cmd: src/annotate/gecco-annotate-slurm.sh data/embeddings/mibig-2.0.proG2.fna.fai
+      data/hmms/Pfam-v35.0.hmm.gz
+    deps:
+    - path: data/embeddings/mibig-2.0.proG2.fna.fai
+      md5: bcd11573d7e46b306781770875f2b02b
+      size: 105772
+    - path: data/hmms/Pfam-v35.0.hmm.gz
+      md5: 2cdbfbec0e3c6f0b1ecb6db1b8fc337f
+      size: 293000230
+    outs:
+    - path: data/embeddings/mibig-2.0.proG2.Pfam-v35.0.features.tsv
+      md5: 74897a4da58e6187c4840df0f85f17b8
+      size: 1686462239
