@@ -1,0 +1,13 @@
+stages:
+  label gene coordinates from MIBiG 1_3 embedding:
+    cmd: python -m pyrodigal -p meta -i mibig-1.3.proG2.fna -f gff -o mibig-1.3.proG2.genes.gff
+    deps:
+    - mibig-1.3.proG2.fna
+    outs:
+    - mibig-1.3.proG2.genes.gff
+  label gene coordinates from MIBiG 2_0 embedding:
+    cmd: python -m pyrodigal -p meta -i mibig-2.0.proG2.fna -f gff -o mibig-2.0.proG2.genes.gff
+    deps:
+    - mibig-2.0.proG2.fna
+    outs:
+    - mibig-2.0.proG2.genes.gff
