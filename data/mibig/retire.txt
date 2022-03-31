@@ -56,3 +56,12 @@ BGC0000965	duplicate of BGC0001397 with extra flanking regions	https://github.co
 BGC0001559	duplicate of BGC0000974 with wrong type	https://github.com/mibig-secmet/mibig-json/issues/170
 BGC0001133	invalid flanking genes	https://github.com/mibig-secmet/mibig-json/issues/176
 BGC0001862	duplicate of BGC0001930 with extra flanking genes	https://github.com/mibig-secmet/mibig-json/issues/178
+BGC0001281	wrong locus coordinates	https://github.com/mibig-secmet/mibig-json/issues/182
+BGC0001317	not a gene cluster (plant)	https://mibig.secondarymetabolites.org/repository/BGC0001317/#r1c1
+BGC0000671	not a gene cluster (plant)	https://mibig.secondarymetabolites.org/repository/BGC0000671/#r1c1
+BGC0000672	not a gene cluster (plant)	https://mibig.secondarymetabolites.org/repository/BGC0000672/#r1c1
+BGC0000810	not a gene cluster (plant)	https://mibig.secondarymetabolites.org/repository/BGC0000810/#r1c1
+BGC0001316	not a gene cluster (plant)	https://mibig.secondarymetabolites.org/repository/BGC0001316/#r1c1
+BGC0001325	not a gene cluster (plant)	https://mibig.secondarymetabolites.org/repository/BGC0001325/#r1c1
+BGC0001799	not a gene cluster (plant)	https://mibig.secondarymetabolites.org/repository/BGC0001799/#r1c1
+
