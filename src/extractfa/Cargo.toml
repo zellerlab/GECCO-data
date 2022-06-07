@@ -6,9 +6,9 @@ edition = "2018"
 publish = false
 
 [dependencies]
-bio = "0.34.0"
+bio = "0.41.0"
 flate2 = "1.0.20"
-pico-args = "0.4.2"
+pico-args = "0.5.0"
 indicatif = "0.16.2"
 
 [[bin]]
